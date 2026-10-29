@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="com.craft.Address">
+        <property name="city" value="Addis Ababa"/>
+        <property name="street" value="Bole"/>
+    </bean>
+
+    <bean id="math" class="com.craft.Subject" scope="singleton">
+        <property name="name" value="Mathematics"/>
+    </bean>
+
+    <bean id="physics" class="com.craft.Subject" scope="prototype">
+        <property name="name" value="Physics"/>
+    </bean>
+
+    <bean id="programming" class="com.craft.Subject">
+        <property name="name" value="Programming"/>
+    </bean>
+
+    <bean id="student" class="com.craft.Student">
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="name" value="Abebe"/>
+        <constructor-arg name="age" value="20"/>
+        <constructor-arg name="address" ref="address"/>
+
+        <property name="subjects">
+            <list>
+                <ref bean="math"/>
+                <ref bean="physics"/>
+                <ref bean="programming"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
